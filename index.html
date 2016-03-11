@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> C0L0R SQU@RE </title>
+    <link href="/jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+    <script src="/jquery-ui-1.11.4/jquery-ui.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script.js"></script>
+  </head>
+  <body  onselectstart="return false;" ondragstart="return false;">
+      <div id="popup1" class="overlay">
+          <div class="popup">
+              <div class="contentswrap">
+              <div class="h1">
+                Join to C0L0R SQU@RE
+              </div>
+
+              <div class="h2">
+                Select your team
+              </div>
+
+              <div class="team_select">
+                  <div class="contents">
+                    <label for="teamlists"></label>
+                  </div>
+                  <div class="contents">
+                    <button>Join!</button>
+                  </div>
+              </div>
+
+              <div class="h2">
+                Or.. make your team
+              </div>
+            <div class="make_team">
+                <div class="contents">
+                    <div class="title">Team name : </div>
+                    <input type="text" id="new_team_name" placeholder="1~23 latters">
+                </div>
+                <div class="contents">
+                    <div class="title">Team color : </div>
+                    <div class="colorbox"> </div>
+                    <div class="title"><button id="refresh">Refresh Color</button></div>
+                </div>
+                <div class="contents">
+                    <button id="genteam">Generate Team</button>
+                </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="userInfo">
+          <p>users online : </p>
+      </div>
+      <div class="infoLayer">
+          <h2>Your team</h2>
+        <div class="currentTeam"></div>
+          <h2>Team color</h2>
+        <div class="currentColor"></div>
+          <h2>Points</h2>
+        <div class="currentPoint"></div>
+          <h2>Team score</h2>
+        <div class="currentTeamScore" id="score"></div>
+          <h2>Number of Members</h2>
+        <div class="currentTeamMembers" id="mN"></div>
+          <h2>Top 20 Teams</h2>
+        <div class="scoreBoard"></div>
+          <ol id='slist'></ol>
+      </div>
+
+      <div class="chatWrap">
+          <div class="globalchat">
+              <div class="chat">
+                    <div class="title">&nbsp; Global chat</div>
+                    <ul class="conv" id="cg"></ul>
+                    <div class = "form">
+                        <input id ="g">
+                        <button id = "gs">send</button>
+                    </div>
+
+              </div>
+          </div>
+
+          <div class="teamchat">
+                <div class="chat">
+                    <div class="title">&nbsp; Team chat</div>
+                    <ul class="conv" id="ct"></ul>
+                    <div class = "form">
+                        <input id ="t">
+                        <button id = "ts">send</button>
+                    </div>
+                </div>
+          </div>
+      </div>
+
+      <div class="cellField">
+      </div>
+      <div class="rightMargin"></div>
+      <div class="bottomMargin"></div>
+      <div class="pingInfo"><p>Ping : ready</p></div>
+  </body>
+</html>
