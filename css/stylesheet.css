@@ -20,7 +20,7 @@
       }
       .pingInfo{width:120px; height:20px; position:absolute; background-color: black; color:white; opacity: 0.5; z-index:1; visibility: hidden;}
       .pingInfo p{opacity:1 !important; margin:2px 0 0 4px;}
-      .userInfo{width:200px; height:40px; color:white; background:black; opacity: 0.5; top:0px; left:0px; position:fixed; z-index:1;}
+      .userInfo{text-align: center; width:200px; height:80px; color:white; background:black; opacity: 0.5; top:0px; left:0px; position:fixed; z-index:1;}
       .userInfo p{opacity:1 !important; font-size:14px; text-align:center;}
       .pointCell{width:8px; height:20px; border:solid 1px #2b2b2b; display:inline-block; position:relative; background:#c9271c;}
       .ready{background:#66bb2a !important;}
@@ -45,7 +45,7 @@
       .chat input{border:solid 4px #3CBC8D; border-radius: 0px; width:320px; height:24px;}
       .chat button{float:right; width:70px; height:34px; background-color:#3CBC8D; color:white; border: none;}
       .you{background-color:#3CBC8D !important; color:white;}
-      .markerWrap {width:200px; height:200px; z-index: 0; position:absolute;}
+      .markerWrap { z-index: 0; position:absolute;}
       .markerWrap .marker {margin: -90px 0 0 -32px; z-index: 1;width: 80px; height:80px; border-radius:50% 50% 50% 0; background : #3978a6; position:absolute; transform : rotate(-45deg); }
       .markerWrap .marker:after {z-index: 1; content:''; width:40px; height:40px; margin:20px 0 0 20px; background:#2f2f2f; position: absolute; -webkit-border-radius: 50%; border-radius:50%;}
       .markerWrap .pulse {
@@ -427,4 +427,48 @@
           visibility: visible;
           opacity: 1;
           z-index: 2;
+      }
+
+      .howto{
+          display:block;
+          margin-left:auto;
+          margin-right:auto;
+          width:700px;
+          height:auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 5px;
+          position:relative;
+          transition: all 5s ease-in-out;
+          font-family: sans-serif;
+          z-index:0;
+          margin-top:15%;
+      }
+      .howto .close {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          transition: all 200ms;
+          font-size: 30px;
+          font-weight: bold;
+          text-decoration: none;
+          color: #333;
+      }
+      .howto .h1{
+          font-family: sans-serif;
+          font-size: 56px;
+
+          text-align: center;
+      }
+      .howto .h2{
+          vertical-align: middle;
+          margin-left:auto;
+          margin-right:auto;
+          padding-top:20px;
+          width:320px;
+          height:40px;
+          background-color: #008CBA;
+          color:white;
+          font-size: 24px;
+          margin-top:10px;
       }
