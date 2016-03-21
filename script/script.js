@@ -59,6 +59,7 @@ function pingCal(){
 }
 
 $(document).ready(function () {
+    //$('#howto1').css('visibility','hidden');
 
     tempColor=randomColor();
 
@@ -129,10 +130,14 @@ $(document).ready(function () {
         userColor = teamColor;
         userTeam = teamName;
         teamNum = teamNumber;
-        $('.overlay').fadeOut();
-        $('.popup').fadeOut();
-        setUserInfo();
+        $('#popup1').fadeOut();
         $('body').append('');
+        $('#howto1').fadeIn();
+    });
+
+    $('#howto1').click(function(){
+        $('#howto1').fadeOut();
+        setUserInfo();
         $('.pingInfo').css('visibility','visible');
     });
 
