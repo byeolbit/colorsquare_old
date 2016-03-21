@@ -2,6 +2,10 @@ var app = require('express')();
 var express = require('express');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var ObjectId = require('mongodb').ObjectID;
+var url = 'mongodb://localhost:27017/test';
 
 app.use(express.static('script'));
 app.use(express.static('css'));
@@ -18,6 +22,60 @@ var stacks = [];
 var scoreList = [];
 
 
+/*
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  insertDocument(db, function() {
+      db.close();
+  });
+});
+
+var insertDocument = function(db, callback) {
+   db.collection('restaurants').insertOne( {
+      "address" : {
+         "street" : "2 Avenue",
+         "zipcode" : "10075",
+         "building" : "1480",
+         "coord" : [ -73.9557413, 40.7720266 ]
+      },
+      "borough" : "Manhattan",
+      "cuisine" : "Italian",
+      "grades" : [
+         {
+            "date" : new Date("2014-10-01T00:00:00Z"),
+            "grade" : "A",
+            "score" : 11
+         },
+         {
+            "date" : new Date("2014-01-16T00:00:00Z"),
+            "grade" : "B",
+            "score" : 17
+         }
+      ],
+      "name" : "Vella",
+      "restaurant_id" : "41704620"
+   }, function(err, result) {
+    assert.equal(err, null);
+    console.log("Inserted a document into the restaurants collection.");
+    callback();
+  });
+};
+*/
+/*
+function writeSave(){
+    var txtFile = "save.txt";
+    var file = new File(txtFile);
+
+    file.open("w");
+    file.writeln(teamList);
+    file.writeln(cellInfo);
+    file.writeln(colorList);
+    file.writeln(userLists);
+    file.writeln(teamCount);
+    file.writeln(clients);
+
+}
+*/
 function celldata(c, s, t){
     this.color = c;
     this.stack = s;
@@ -25,6 +83,7 @@ function celldata(c, s, t){
     this.isCompleted = false;
 }
 
+/*
 function client_class(ID, addr){
     this.id = ID;
     this.team = null;
@@ -33,6 +92,15 @@ function client_class(ID, addr){
     this.point = 0;
     this.ping = true;
     this.address = addr;
+}
+*/
+function client_class(ID){
+    this.id = ID;
+    this.team = null;
+    this.tname = null;
+    this.nick = newNick();
+    this.point = 0;
+    this.ping = true;
 }
 
 function getAddr(addr){
@@ -185,7 +253,7 @@ for (var i=1; i<1601; i++){
     colorList[i] = "#AAAAAA";
     stacks[i] = 0;
 }
-var pointTimer = setInterval(addPoint, 1000);
+var pointTimer = setInterval(addPoint, 10000);
 
 function newNick(){
      return 'user#'+(Math.random() + 1).toString(36).substr(6);
@@ -247,11 +315,11 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
 
     //var addr = socket.request.connection.remoteAddress;
-    var ip = socket.request.headers['x-forwarded-for'] ||
+/*    var ip = socket.request.headers['x-forwarded-for'] ||
      socket.req.connection.remoteAddress ||
      socket.req.socket.remoteAddress ||
      socket.req.connection.socket.remoteAddress;
-    console.log(ip);
+    console.log(ip);*/
     /*
     if(checkIP(addr)){
         io.sockets.connected[socket.id].emit('wrong connectoin');
@@ -259,7 +327,7 @@ io.on('connection', function(socket){
         return false;
     }
     */
-    clients.push(new client_class(socket.id, addr));
+    clients.push(new client_class(socket.id));
 
     userCount++;
     console.log(userCount+clients[userCount-1].id);
